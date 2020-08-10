@@ -1,0 +1,6 @@
+course_section_integration_id,user_integration_id,user_role,available_ind,start_date,end_date,add_drop_date,cost_of_attendance,toefl_composite,term_name,term_id,transfer,course_id,course_name,start_time,final_gpa,ag_grading_type,email
+BIOL101.209.04,Emily.Sand,Student,1,2013-12-15,2015-10-09,04/02/13 13:14,13000,3.5,Fall 2015,201503,Y,CSE401,Computer Science and Engineering,11:30:00,3.85,NUMERIC,pparker@illuminator.com
+MATH-444-999-201503,Lexy.Gilmore,INSTRUCTOR,1,2014-12-16,2015-10-20,04/02/14 13:14,15000,3.5,Spring 2015,201503,N,CSE301,Computer Science Engineering1,13:30:00,7.65,LETTER,lgilmore@illuminator.com
+MATH-444-999-201503,Yolada.Gold,INSTRUCTOR,1,2015-12-16,2015-10-20,04/02/15 13:14,15000,3.5,Spring 2015,201503,N,CSE302,Computer Science and Engineering1,14:30:00,5.5,NUMERIC,ygold@illuminator.com
+MATH-444-999-201503,Emma.Mack,Student,1,2016-12-16,2015-10-20,04/02/16 13:14,15000,3.5,Spring 2015,201503,N,CSE303,Computer Science and Engineering1,15:30:00,4.5,LETTER,emack@illuminator.com
+SCI-CHEM201-600-201603,Grant.Jordan,Tenant Admin,1,2016-12-16,2015-10-20,04/02/16 13:14,15000,3.5,Spring 2015,201503,Y,CSE304,Computer Science and Engineering1,16:30:00,3.5,NUMERIC,gordan@illuminator.com

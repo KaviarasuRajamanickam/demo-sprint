@@ -1,29 +1,54 @@
 const fileValidator = require("../../controllers/utilities.js");
 const inputFilePath = '/home/kaviarasu/kaviarasu/projects/hobsons/demo-sprint/testData/requirements.csv';
-const outputFilePath = "/home/kaviarasu/kaviarasu/projects/hobsons/demo-sprint/testData/requirements_log.csv";
-
+const outputCsvPath = "/home/kaviarasu/kaviarasu/projects/hobsons/demo-sprint/testData/output_csv.csv";
+const outputGenCsvPath = "/home/kaviarasu/kaviarasu/projects/hobsons/demo-sprint/testData/outputGen_csv.csv";
+const headerDataArr = [
+    'user_id',
+    'user_integration_id',
+    'user_role',
+    'course_id',
+    'course_name',
+    'email'
+];
+const recordCount = 10;
 describe('To assert the datas are present in the csv file', () => {
 
     beforeEach(async() => {
+        inputData = await fileValidator.getDataRow(inputFilePath);
+        if(inputData.header.length) {
+            frameHeaderData = await fileValidator.frameHeaderData(inputData.header)
+        }
+        if(frameHeaderData.length && inputData.records.length){
+            outputCsv = await fileValidator.writeDataToCSV(outputCsvPath, frameHeaderData, inputData.records);
+        }
+        outputData = await fileValidator.getDataRow(inputFilePath);
 
-        inputVal = await fileValidator.getData(inputFilePath);
-        outputVal = await fileValidator.getData(outputFilePath);
- 
     });
 
+    it('Assert the output csv generated based on the input csv', async () => {
 
-    it('Assert the length should be equal', async () => {
-
-        // console.log("input "+JSON.stringify(inputVal[2]))
-        expect(inputVal.length).toBe(outputVal.length);
+        frameGenHeaderData = await fileValidator.frameHeaderData(headerDataArr)
+        genInputData = await fileValidator.createDataObj(headerDataArr, recordCount)
+        if(genInputData.length){
+            outputCsv = await fileValidator.writeDataToCSV(outputGenCsvPath, frameGenHeaderData, genInputData);
+        }
+        outputWriteData = await fileValidator.getDataRow(outputGenCsvPath);
+        expect(outputCsv.length).toBe(outputWriteData.records.length);
 
     })
 
-    it('To check the email is masked correctly', async () => {
 
-        // console.log("input " + JSON.stringify(inputVal[0].email))
-        // console.log("input " + JSON.stringify(outputVal[0].email))
-        expect(outputVal[0].email).toBe('p*****r@illuminator.com');
+    it('Assert the length of the header and the data should be equal', () => {
+
+        expect(inputData.header.length).toBe(outputData.header.length);
+        expect(inputData.records.length).toBe(outputData.records.length);
+
+    })
+
+    it('Assert the output csv file is generate based on the automated input data', () => {
+        
+        expect(inputData.header.length).toBe(outputData.header.length);
+        expect(inputData.records.length).toBe(outputData.records.length);
 
     })
 })

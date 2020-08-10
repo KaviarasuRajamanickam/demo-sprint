@@ -5,10 +5,12 @@
   "main": "index.js",
   "dependencies": {
     "csv-parser": "^2.3.3",
+    "csv-writer": "^1.6.0",
     "fs": "^0.0.1-security"
   },
   "devDependencies": {
-    "jest": "^26.1.0"
+    "jest": "^25.2.2",
+    "supertest": "^4.0.2"
   },
   "jest": {
     "verbose": true
